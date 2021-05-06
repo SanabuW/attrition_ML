@@ -1,0 +1,21 @@
+name: attrition_env
+# Install: conda env create --file python_adv.yml
+# Update:  conda env update --file python_adv.yml --prune
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - requests
+  - scipy
+  - scikit-learn
+  - tensorflow
+  - py4j
+  - pyspark
+  - jupyter_client
+  - nb_conda_kernels
+  - matplotlib
+  - keras
+  - ipykernel
+  - flask
+  - sqlalchemy
+  - requests
