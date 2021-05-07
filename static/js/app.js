@@ -1,9 +1,11 @@
 /* data routes */
 const dummy_url = "/api/dummy";
+const raw_url = "/api/raw"
 console.log("reading js.app")
 // Read in beach data and get marker clusters
 Promise.all([
-    d3.json([dummy_url])
+    d3.json(dummy_url),
+    d3.json(raw_url),
     ]).then(function(data) {
         console.log(data);
         // Loop through data

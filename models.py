@@ -15,6 +15,49 @@ def create_dummy_classes(db):
     return dummy
 
 
+def create_raw_classes(db):
+    class raw(db.Model):
+        __tablename__ = 'raw_data'
+        index = db.Column(db.Integer, primary_key=True)
+        Age = db.Column(db.Integer)
+        Attrition = db.Column(db.String(64))
+        BusinessTravel = db.Column(db.String(64))
+        DailyRate = db.Column(db.Integer)
+        Department = db.Column(db.String(64))
+        DistanceFromHome = db.Column(db.Integer)
+        Education = db.Column(db.Integer)
+        EducationField = db.Column(db.String(64))
+        EmployeeCount = db.Column(db.Integer)
+        EmployeeNumber = db.Column(db.Integer)
+        EnvironmentSatisfaction = db.Column(db.Integer)
+        Gender = db.Column(db.String(64))
+        HourlyRate = db.Column(db.Integer)
+        JobInvolvement = db.Column(db.Integer)
+        JobLevel = db.Column(db.Integer)
+        JobRole = db.Column(db.String(64))
+        JobSatisfaction = db.Column(db.Integer)
+        MaritalStatus = db.Column(db.String(64))
+        MonthlyIncome = db.Column(db.Integer)
+        MonthlyRate = db.Column(db.Integer)
+        NumCompaniesWorked = db.Column(db.Integer)
+        Over18 = db.Column(db.String(64))
+        OverTime = db.Column(db.String(64))
+        PercentSalaryHike = db.Column(db.Integer)
+        PerformanceRating = db.Column(db.Integer)
+        RelationshipSatisfaction = db.Column(db.Integer)
+        StandardHours = db.Column(db.Integer)
+        StockOptionLevel = db.Column(db.Integer)
+        TotalWorkingYears = db.Column(db.Integer)
+        TrainingTimesLastYear = db.Column(db.Integer)
+        WorkLifeBalance = db.Column(db.Integer)
+        YearsAtCompany = db.Column(db.Integer)
+        YearsInCurrentRole = db.Column(db.Integer)
+        YearsSinceLastPromotion = db.Column(db.Integer)
+        YearsWithCurrManager = db.Column(db.Integer)
+        def __repr__(self):
+            return '<Dummy %r>' % (self.string_col)
+    return raw
+
 # def create_classes(db):
 #     class Beach(db.Model):
 #         __tablename__ = 'beaches'
