@@ -22,11 +22,13 @@ Cython==0.29.23
 decorator==5.0.6
 defusedxml==0.7.1
 entrypoints==0.3
-gast==0.2.2
+#changed from 0.2.2 to match build log
+gast==0.3.3
 google-auth==1.30.0
 google-auth-oauthlib==0.4.4
 google-pasta==0.2.0
-grpcio==1.36.1
+#changed from 1.36.1 to match build log
+grpcio==1.32.0
 h5py==2.10.0
 idna==2.10
 idna-ssl==1.1.0
@@ -62,7 +64,8 @@ notebook==6.3.0
 numpy==1.19.2
 oauthlib==3.1.0
 olefile==0.46
-opt-einsum==3.1.0
+#changed from 3.1.0 to match build log
+opt-einsum==3.3.0
 packaging==20.9
 pandas==1.1.5
 pandocfilters==1.4.3
@@ -107,7 +110,8 @@ tensorboard==2.4.0
 tensorboard-plugin-wit>=1.6.0
 #edit
 tensorflow>=2.0.0
-tensorflow-estimator==2.1.0
+#changed from 2.1.0 to match build log
+tensorflow-estimator==2.4.0
 termcolor==1.1.0
 terminado==0.9.4
 testpath==0.4.4
