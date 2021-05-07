@@ -1,8 +1,11 @@
-name: attrition_env
-# Install: conda env create --file attrition_env_2.yml
+name: attrition_env_2
+# Install: conda env create --file misc_resources/other/attrition_env_2.yml
 # Update:  conda env update --file attrition_env_2.yml --prune
 dependencies:
   - python
+  - pip
+  - pip:
+    - gunicorn
   - numpy
   - pandas
   - requests
@@ -19,6 +22,5 @@ dependencies:
   - flask
   - sqlalchemy
   - requests
-  - gunicorn
   - flask-sqlalchemy
   - psycopg2
