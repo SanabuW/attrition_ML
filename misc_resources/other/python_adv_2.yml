@@ -1,6 +1,6 @@
 name: PythonAdv_2
-# Install: conda env create --file PythonAdv_2.yml
-# Update:  conda env update --file PythonAdv_2.yml --prune
+# Install: conda env create --file misc_resources/other/python_adv_2.yml
+# Update:  conda env update --file misc_resources/other/python_adv_2.yml --prune
 dependencies:
   - python=3.6
   - numpy
