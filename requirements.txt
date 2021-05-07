@@ -42,9 +42,9 @@ jedi==0.17.0
 Jinja2==2.11.3
 joblib==1.0.1
 jsonschema==3.2.0
-jupyter-client==6.1.12
-jupyter-core==4.7.1
-jupyterlab-pygments==0.1.2
+# jupyter-client==6.1.12
+# jupyter-core==4.7.1
+# jupyterlab-pygments==0.1.2
 Keras==2.4.3
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.2
@@ -73,7 +73,7 @@ pandocfilters==1.4.3
 parso==0.8.2
 pickleshare==0.7.5
 Pillow==8.2.0
-pip==21.0.1
+# pip==21.0.1
 prometheus-client==0.10.1
 prompt-toolkit==3.0.17
 protobuf==3.11.2
@@ -103,7 +103,7 @@ rsa==4.7.2
 scikit-learn==0.24.1
 scipy==1.6.2
 Send2Trash==1.5.0
-setuptools<=52.0.0.post20210125
+# setuptools<=52.0.0.post20210125
 # sip==4.19.13
 six==1.15.0
 SQLAlchemy==1.4.7
