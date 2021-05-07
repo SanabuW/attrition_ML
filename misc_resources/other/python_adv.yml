@@ -19,3 +19,7 @@ dependencies:
   - flask
   - sqlalchemy
   - requests
+  - gunicorn
+  - flask
+  - flask-sqlalchemy
+  - psycopg2
