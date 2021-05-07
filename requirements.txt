@@ -105,7 +105,7 @@ tensorboard==2.4.0
 #edit
 tensorboard-plugin-wit>=1.6.0
 #edit
-tensorflow>=2.1.0
+tensorflow==2.1.0
 tensorflow-estimator==2.1.0
 termcolor==1.1.0
 terminado==0.9.4
