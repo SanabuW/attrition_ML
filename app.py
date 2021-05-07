@@ -9,7 +9,8 @@ from flask import (
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-from config import username, password
+## Comment out when using live ver.
+# from config import username, password
 import os
 
 # Query functions to be applied to the separate api routes
