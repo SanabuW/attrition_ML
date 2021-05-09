@@ -1,11 +1,11 @@
 CREATE TABLE dummy_data (
-	id_col INT NOT NULL,
+	id_col SERIAL PRIMARY KEY,
 	int_col	INT,
-	float_col DEC,
+	float_col FLOAT,
 	string_col VARCHAR,
 	bool_col BOOLEAN,
 	na_col VARCHAR,
 	time_col timestamptz,
-	latitude_col DEC,
-	longitude_col DEC
+	latitude_col FLOAT,
+	longitude_col FLOAT
 );
