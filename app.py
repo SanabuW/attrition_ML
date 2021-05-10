@@ -12,7 +12,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 ## Comment out when using live ver.
-# from config import username, password
+from config import username, password
 import os
 
 # Query functions to be applied to the separate api routes
@@ -40,29 +40,29 @@ app = Flask(__name__)
 ####################################
 # Setup database connection
 ####################################
-# # DEV/EDUCATIONAL VERSION
-# # Use SQLAlchemy to connect to postgreSQL server
-# engine = create_engine("postgresql://" + username + ":" + password + "@ec2-3-233-7-12.compute-1.amazonaws.com:5432/dfhhj9j187pecn")
-# conn = engine.connect()
-# Base = automap_base()
-# Base.prepare(engine, reflect=True)
-# session = Session(bind=engine)
-# dummy_class = Base.classes.dummy_data
-# raw_class = Base.classes.raw_data
-# ## Test class
-# ## Grade_data_dummy = Base.classes.grade_data_dummy
+# DEV/EDUCATIONAL VERSION
+# Use SQLAlchemy to connect to postgreSQL server
+engine = create_engine("postgresql://" + username + ":" + password + "@ec2-3-233-7-12.compute-1.amazonaws.com:5432/dfhhj9j187pecn")
+conn = engine.connect()
+Base = automap_base()
+Base.prepare(engine, reflect=True)
+session = Session(bind=engine)
+dummy_class = Base.classes.dummy_data
+raw_class = Base.classes.raw_data
+## Test class
+## Grade_data_dummy = Base.classes.grade_data_dummy
 
 
-# SECURE/LIVE OPS VERSION
-# To be used if the online live app's login needs to be secure
-# Set up database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '').replace("://", "ql://", 1)
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-# Will need to switch to using models.py to create classes instead of sqlAlchemy reflectiosn
-dummy_class = create_dummy_classes(db)
-raw_class = create_raw_classes(db)
+# # SECURE/LIVE OPS VERSION
+# # To be used if the online live app's login needs to be secure
+# # Set up database connection
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '').replace("://", "ql://", 1)
+# # Remove tracking modifications
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# db = SQLAlchemy(app)
+# # Will need to switch to using models.py to create classes instead of sqlAlchemy reflectiosn
+# dummy_class = create_dummy_classes(db)
+# raw_class = create_raw_classes(db)
 
 
 ####################################
