@@ -40,29 +40,29 @@ app = Flask(__name__)
 ####################################
 # Setup database connection
 ####################################
-# DEV/EDUCATIONAL VERSION
-# Use SQLAlchemy to connect to postgreSQL server
-engine = create_engine("postgresql://" + username + ":" + password + "@ec2-3-233-7-12.compute-1.amazonaws.com:5432/dfhhj9j187pecn")
-conn = engine.connect()
-Base = automap_base()
-Base.prepare(engine, reflect=True)
-session = Session(bind=engine)
-dummy_class = Base.classes.dummy_data
-raw_class = Base.classes.raw_data
-## Test class
-## Grade_data_dummy = Base.classes.grade_data_dummy
+# # DEV/EDUCATIONAL VERSION
+# # Use SQLAlchemy to connect to postgreSQL server
+# engine = create_engine("postgresql://" + username + ":" + password + "@ec2-3-233-7-12.compute-1.amazonaws.com:5432/dfhhj9j187pecn")
+# conn = engine.connect()
+# Base = automap_base()
+# Base.prepare(engine, reflect=True)
+# session = Session(bind=engine)
+# dummy_class = Base.classes.dummy_data
+# raw_class = Base.classes.raw_data
+# ## Test class
+# ## Grade_data_dummy = Base.classes.grade_data_dummy
 
 
-# # SECURE/LIVE OPS VERSION
-# # To be used if the online live app's login needs to be secure
-# # Set up database connection
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '').replace("://", "ql://", 1)
-# # Remove tracking modifications
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db = SQLAlchemy(app)
-# # Will need to switch to using models.py to create classes instead of sqlAlchemy reflectiosn
-# dummy_class = create_dummy_classes(db)
-# raw_class = create_raw_classes(db)
+# SECURE/LIVE OPS VERSION
+# To be used if the online live app's login needs to be secure
+# Set up database connection
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '').replace("://", "ql://", 1)
+# Remove tracking modifications
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+# Will need to switch to using models.py to create classes instead of sqlAlchemy reflectiosn
+dummy_class = create_dummy_classes(db)
+raw_class = create_raw_classes(db)
 
 
 ####################################
@@ -103,12 +103,12 @@ data_dict = {
 # Remove "db." when switching to dev version
 @app.route("/api/dummy")
 def dummy():
-    dummy_data_output = dummy_data_query(session, dummy_class)
+    dummy_data_output = dummy_data_query(db.session, dummy_class)
     return jsonify(dummy_data_output)
 
 @app.route("/api/raw")
 def raw():
-    raw_data_output = raw_data_query(session, raw_class)
+    raw_data_output = raw_data_query(db.session, raw_class)
     return jsonify(raw_data_output)
 
 
