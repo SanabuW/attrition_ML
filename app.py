@@ -12,7 +12,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 ## Comment out when using live ver.
-from config import username, password
+# from config import username, password
 import os
 
 # Query functions to be applied to the separate api routes
