@@ -139,8 +139,8 @@ def predictor_func(val1, val2) :
 
     # %%
     result_response = {
-        "probability": float(pred_prob5[0]),
-        "prediction": float(prediction5[0])
+        "probability": f'{round(float(pred_prob5[0]), 4)*100}%',
+        "prediction": int(prediction5[0])
     }
 
     # %%

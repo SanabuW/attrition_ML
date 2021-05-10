@@ -152,7 +152,7 @@ type(float(pred_prob5[0]))
 # %%
 result_response = {
     "probability": float(pred_prob5[0]),
-    "prediction": float(prediction5[0])
+    "prediction": f'{float(prediction5[0])*100}%'
 }
 # %%
 type(result_response)

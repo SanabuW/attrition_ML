@@ -32,21 +32,25 @@
 			<div class="col-md-offset-2 col-md-8">
 				<form method="POST" action="/send" role="form", name="alg_input_form">
 					<div class="form-group">
-						<label for="val_1_form">int_col</label>
+						<label for="val_1_form">X Value</label>
 						<input type="text" class="form-control" id="val_1_form" name="val_1_form_name" placeholder="3">
 					</div>
 					<div class="form-group">
-						<label for="val_2_form">float_col</label>
+						<label for="val_2_form">Y Value</label>
 						<input type="text" class="form-control" id="val_2_form" name="val_2_form_name" placeholder="3">
 					</div>
-					<input type="submit" value="submit" class="btn btn-default">
+					<input type="submit" value="Submit" class="btn btn-default">
 				</form>
 			</div>
 		</div>
 
+<br><br><br>
+
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8">
-				<a href="/results.html">To Results</a>
+				<p id = "result_predict">Low X & High Y should predict "0", High X & Low Y should predict "1"</p>
+				<p id = "result_predict">Prediction: {{predict_text}}</p>
+				<p id = "result_prob">Probability: {{prob_text}}</p>
 			</div>
 		</div>
 

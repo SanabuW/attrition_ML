@@ -112,7 +112,27 @@ def raw():
     return jsonify(raw_data_output)
 
 
-# Predictor test to send to predictor
+# # Predictor test to send to predictor
+# @app.route("/send", methods=["GET", "POST"])
+# def send():
+#     if request.method == "POST":
+#         val1_data = request.form["val_1_form_name"]
+#         val2_data = request.form["val_2_form_name"]
+#         data_dict["dict_val1"] = val1_data
+#         data_dict["dict_val2"] = val2_data
+#         return redirect("/", code=302)
+#     return render_template("form.html")
+
+
+# # Predictor test to receive from predictor. Activates on user input from "send" route,
+# #after the user submits information
+# @app.route("/receive")
+# def receive():
+#     response = predictor_func(data_dict["dict_val1"], data_dict["dict_val2"])
+#     return jsonify(response)
+
+
+# Combined predictor route to post back out into HTML
 @app.route("/send", methods=["GET", "POST"])
 def send():
     if request.method == "POST":
@@ -120,8 +140,15 @@ def send():
         val2_data = request.form["val_2_form_name"]
         data_dict["dict_val1"] = val1_data
         data_dict["dict_val2"] = val2_data
-        return redirect("/", code=302)
-    return render_template("form.html")
+        response = predictor_func(request.form["val_1_form_name"], request.form["val_2_form_name"])
+        prob_output = response["probability"]
+        predict_output = response["prediction"]
+
+
+        return render_template("form.html", prob_text = prob_output, predict_text = predict_output)
+        # return render_template("results.html", prob_text = prob_output, predict_text = predict_output)
+        # return redirect("/", code=302)
+    return render_template("results.html")
 
 
 # Predictor test to receive from predictor. Activates on user input from "send" route,
@@ -130,6 +157,11 @@ def send():
 def receive():
     response = predictor_func(data_dict["dict_val1"], data_dict["dict_val2"])
     return jsonify(response)
+
+
+
+
+
 
 # # POST test
 # @app.route("/send", methods=["GET", "POST"])
