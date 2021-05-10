@@ -1,7 +1,7 @@
 def create_dummy_classes(db):
     class dummy(db.Model):
         __tablename__ = 'dummy_data'
-        id_col = db.Column(db.Integer, primary_key=True)
+        id_col = db.Column(db.Integer, primary_key=True, autoincrement = True)
         int_col = db.Column(db.String(64))
         float_col = db.Column(db.String(64))
         string_col = db.Column(db.String(64))

@@ -16,9 +16,9 @@ def dummy_data_query (session, dummy_data) :
         dummy_data.longitude_col
         ).all()
 
-    dummy_data = []
+    dummy_data_array = []
     for dummy_data_info in dummy_data_results:
-        dummy_data.append({
+        dummy_data_array.append({
             "id_col": dummy_data_info[0],
             "int_col": dummy_data_info[1],
             "float_col": dummy_data_info[2],
@@ -27,10 +27,9 @@ def dummy_data_query (session, dummy_data) :
             "na_col": dummy_data_info[5],
             "latitude_col": dummy_data_info[6],
             "longitude_col": dummy_data_info[7]
-
     })
 
-    return dummy_data,
+    return dummy_data_array
 
 
 
