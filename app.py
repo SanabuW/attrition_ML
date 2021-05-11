@@ -103,12 +103,12 @@ data_dict = {
 # Remove "db." when switching to dev version
 @app.route("/api/dummy")
 def dummy():
-    dummy_data_output = dummy_data_query(db.session, dummy_class)
+    dummy_data_output = dummy_data_query(session, dummy_class)
     return jsonify(dummy_data_output)
 
 @app.route("/api/raw")
 def raw():
-    raw_data_output = raw_data_query(db.session, raw_class)
+    raw_data_output = raw_data_query(session, raw_class)
     return jsonify(raw_data_output)
 
 
