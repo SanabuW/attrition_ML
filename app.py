@@ -17,7 +17,7 @@ import os
 
 # Query functions to be applied to the separate api routes
 from data_query import dummy_data_query, raw_data_query
-from data_query import grades_dummy_query
+# from data_query import grades_dummy_query
 
 # For secure/live ops version deployment
 from flask_sqlalchemy import SQLAlchemy
