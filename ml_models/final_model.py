@@ -23,11 +23,8 @@ def preprocess_cat_columns(data):
 
 
 def num_pipeline_transformer(data):
-
     numerics = ['int64']
-
     num_attrs = data.select_dtypes(include=numerics)
-
     num_pipeline = Pipeline([
         ('std_scaler', StandardScaler()),
         ])
@@ -35,20 +32,19 @@ def num_pipeline_transformer(data):
 
 
 def pipeline_transformer(data):
-
     cat_attrs = ["BusinessTravel", "Department", "Education", 
                     "EducationField", "EnvironmentSatisfaction", "Gender",
                     "JobInvolvement", "JobRole", "JobSatisfaction", 
                     "MaritalStatus", "OverTime", "PerformanceRating", 
                     "RelationshipSatisfaction", "WorkLifeBalance"]
     num_attrs, num_pipeline = num_pipeline_transformer(data)
-    full_pipeline = ColumnTransformer([
+    prepared_data = ColumnTransformer([
         ("num", num_pipeline, list(num_attrs)),
         ("cat", OneHotEncoder(), cat_attrs),
         ])
-    full_pipeline.fit_transform(data)
-    
-    return full_pipeline
+    prepared_data.fit_transform(data)
+    return prepared_data
+
 
 def predict_attrition(config, model):
 
@@ -63,5 +59,25 @@ def predict_attrition(config, model):
     prepared_df = pipeline.transform(preproc_df)
     print(len(prepared_df))
     y_pred = model.predict(prepared_df)
+    probability = model.predict_proba(prepared_df)
     
-    return y_pred
+    return y_pred, probability
+
+
+# def make_predictions(processed_df, model):
+#     prediction = model.predict(processed_df)
+#     probability = model.predict_proba(processed_df)
+#     probabilities = []
+#     for prob_array in probability:
+#         probabilities.append(prob_array[1])
+    
+#     predictions_df = pd.DataFrame({"prediction": prediction,
+#                                    "probability": probabilities})
+    
+#     predictions_json = predictions_df.to_json(orient='records')
+#     return predictions_json 
+
+# def generate_predictions():
+#     test_df = pd.read_json("holdout_test.json")
+
+#     model_path = "attrition_prediction_model.bin"
