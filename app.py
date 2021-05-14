@@ -65,7 +65,6 @@ def predict():
         val5_data = request.form['JobInvolvement']
         val6_data = request.form['DistanceFromHome']
         val7_data = request.form['BusinessTravel']
-        val8_data = request.form['Age']
         data_dict = {"Age": val1_data, 
                       "Education": val2_data, 
                       "HourlyRate": val3_data,

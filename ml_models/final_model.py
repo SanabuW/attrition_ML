@@ -32,7 +32,7 @@ def num_pipeline_transformer(data):
 
 
 def pipeline_transformer(data):
-    cat_attrs = ["Education", "JobInvolvement", "BusinessTravel"]
+    cat_attrs = ["Education", "JobInvolvement","BusinessTravel"]
     # cat_attrs = ["BusinessTravel", "Department", "Education", 
     #                 "EducationField", "EnvironmentSatisfaction", "Gender",
     #                 "JobInvolvement", "JobRole", "JobSatisfaction", 
@@ -50,7 +50,8 @@ def pipeline_transformer(data):
 def predict_attrition(config, model):
 
     if type(config) == dict:
-        df = pd.DataFrame(config, index=[0])
+        df_prep = config.copy()
+        df = pd.DataFrame(df_prep, index=[0])
     else:
         df = config
 
