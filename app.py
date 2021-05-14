@@ -72,8 +72,7 @@ def predict():
                       "JobRole": val4_data,
                       "JobInvolvement": val5_data,
                       "DistanceFromHome": val6_data,
-                      "BusinessTravel": val7_data,
-                      "Age": val8_data}
+                      "BusinessTravel": val7_data}
         response = predict_attrition(data_dict, model)
         prob_output = response["probability"]
         predict_output = response["y_pred"]
