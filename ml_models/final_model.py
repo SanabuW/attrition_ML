@@ -15,6 +15,15 @@ def preprocess_cat_columns(data):
     data["Education"] = data["Education"].map({1:"Below College", 2:"College", 3:"Bachelor", 4:"Master",5:"Doctor"}) 
     # attrition_df["EnvironmentSatisfaction"] = attrition_df["EnvironmentSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
     data["JobInvolvement"] = data["JobInvolvement"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
+    data["BusinessTravel"] = data["BusinessTravel"].map({1:"Travel_Frequently", 2:"Travel_Rarely", 3:"Non_Travel"})
+    data["Gender"] = data["Gender"].map({1:"Female", 2:"Male"})
+
+
+    # data["Education"] = data["Education"].map({"Below College":1, "College":2, "Bachelor":3, "Master":4,"Doctor":5})
+    # data["JobInvolvement"] = data["JobInvolvement"].map({"Low":1, "Medium":2, "High":3, "Very High":4})
+    # data["BusinessTravel"] = data["BusinessTravel"].map({"Travel_Frequently":1, "Travel_Rarely":2, "Non_Travel":3})
+
+
     # attrition_df["JobSatisfaction"] = attrition_df["JobSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
     # attrition_df["PerformanceRating"] = attrition_df["PerformanceRating"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
     # attrition_df["RelationshipSatisfaction"] = attrition_df["RelationshipSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
@@ -32,7 +41,7 @@ def num_pipeline_transformer(data):
 
 
 def pipeline_transformer(data):
-    cat_attrs = ["Education", "JobInvolvement", "BusinessTravel"]
+    cat_attrs = ["Education", "JobInvolvement", "BusinessTravel", "Gender"]
     # cat_attrs = ["BusinessTravel", "Department", "Education", 
     #                 "EducationField", "EnvironmentSatisfaction", "Gender",
     #                 "JobInvolvement", "JobRole", "JobSatisfaction", 
@@ -50,9 +59,12 @@ def pipeline_transformer(data):
 def predict_attrition(config, model):
 
     if type(config) == dict:
-        df = pd.DataFrame(config, index=[0])
+        # REVIEW HERE
+        df_prep = config.copy()
+        df = pd.DataFrame(df_prep, index=[0])
+        print(df)
     else:
-        df = config
+        df = config.copy()
 
     preproc_df = preprocess_cat_columns(df)
     print(preproc_df)

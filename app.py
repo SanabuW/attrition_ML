@@ -58,21 +58,23 @@ def predict():
         model = pickle.load(file)
         file.close()
     if request.method == "POST":
-        val1_data = request.form['Age']
-        val2_data = request.form['Education']
-        val3_data = request.form['HourlyRate']
-        val4_data = request.form['JobRole']
-        val5_data = request.form['JobInvolvement']
-        val6_data = request.form['DistanceFromHome']
-        val7_data = request.form['BusinessTravel']
-        val8_data = request.form['Age']
-        data_dict = {"Age": val1_data, 
-                      "Education": val2_data, 
+        val1_data = int(request.form['Age'])
+        val2_data = int(request.form['Education'])
+        val3_data = int(request.form['HourlyRate'])
+        val4_data = int(request.form['JobRole'])
+        val5_data = int(request.form['JobInvolvement']) # +3
+        val6_data = int(request.form['DistanceFromHome'])
+        val7_data = int(request.form['BusinessTravel']) #+2
+        val8_data = int(request.form['Gender']) #+1
+        data_dict = {"Age": val1_data,
+                      "Education": val2_data,
                       "HourlyRate": val3_data,
                       "JobRole": val4_data,
                       "JobInvolvement": val5_data,
                       "DistanceFromHome": val6_data,
-                      "BusinessTravel": val7_data}
+                      "BusinessTravel": val7_data,
+                      "Gender": val8_data}
+
         response = predict_attrition(data_dict, model)
         prob_output = response["probability"]
         predict_output = response["y_pred"]
