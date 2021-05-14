@@ -112,27 +112,24 @@
       <div class="page-header section-height-75">
         <div class="container">
           <div class="row">
-            <div class="col-xl-8 col-lg-9 col-md-10 d-flex flex-column mx-auto">
+            <div class="col-xl-10 col-lg-11 col-md-12 d-flex flex-column mx-auto">
               <div class="card card-plain mt-8">
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">Attrition Predictor</h3>
-                  <p class="mb-0">Enter details below</p>
+                  <p class="mb-0"><strong>Enter details below</strong></p>
+                  <p class="mb-0">*Please note that this prediction algorithm is based off of fictitious data and does not reflect real-world scenarios.</p>
                 </div>
                 <div class="card-body">
+
+
+<!-- Begin Form code -->
                     <form method="POST" action="/send" role="form text-left", name="alg_input_form">
                     <div class = "row">
-
-
-
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_1_form">Age</label>
-                        <select class="form-control" id = "val_1_form" name = "Age">
-                          <option value = 2>2</option>
-                          <option value = 10>10</option>
-                        </select>
+                        <input class="form-control" id = "val_1_form" name = "Age">
+
                       </div>
-
-
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_2_form">Education</label>
                         <select class="form-control" id = "val_2_form" name = "Education">
@@ -143,16 +140,10 @@
                           <option value = "5">Doctor</option>
                         </select>
                       </div>
-
-
                       <div class="form-group col-md-offset-3 col-md-3">
-                        <label for="val_6_form">Distance From Home</label>
-                        <select class="form-control" id = "val_6_form" name = "DistanceFromHome">
-                          <option value = 2>2</option>
-                          <option value = 10>10</option>
-                        </select>
+                        <label for="val_6_form">Distance From Home (miles)</label>
+                        <input  class="form-control" id = "val_6_form" name = "DistanceFromHome">
                       </div>
-
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_5_form">Job Involvement</label>
                         <select class="form-control" id = "val_5_form" name = "JobInvolvement">
@@ -163,25 +154,23 @@
                         </select>
                       </div>
                     </div>
-
-
-
-
-
                     <div class = "row">
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_3_form">Hourly Rate</label>
-                        <select class="form-control" id = "val_3_form" name = "HourlyRate">
-                          <option value = 2>2</option>
-                          <option value = 10>10</option>
-                        </select>
+                        <input class="form-control" id = "val_3_form" name = "HourlyRate">
                       </div>
-
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_4_form">Job Role</label>
                         <select class="form-control" id = "val_4_form" name = "JobRole">
-                          <option value = 2>2</option>
-                          <option value = 10>10</option>
+                          <option value = "1">Sales Executive</option>
+                          <option value = "2">Research Scientist</option>
+                          <option value = "3">Laboratory Technician</option>
+                          <option value = "4">Manufacturing Director</option>
+                          <option value = "5">Healthcare Representative</option>
+                          <option value = "6">Manager</option>
+                          <option value = "7">Sales Representative</option>
+                          <option value = "8">Research Director</option>
+                          <option value = "9">Human Resources</option>
                         </select>
                       </div>
 
@@ -201,23 +190,15 @@
                           <option value = 3>No Travel</option>
                         </select>
                       </div>
-
-
                     </div>
-
-
-
-
                     <input type="submit" value="Submit" class="btn btn-default">
-
-
                   </form>
-<br><br>
+<!-- End Form code -->
+
+<br>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  <p id = "result_predict">Low X & High Y should predict "0", High X & Low Y should predict "1"</p>
-                  <p id = "result_predict">High chance of being an attrition employee?: {{predict_text}}</p>
-                  <!-- <p id = "result_prob">Probability: {{prob_text}}</p> -->
+                  <p id = "result_predict"><strong>High chance of being an attrition employee?: {{predict_text}}</strong></p>
                 </div>
               </div>
             </div>
