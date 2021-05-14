@@ -51,9 +51,6 @@ data_dict = {
 # APIs for data retrieval from server
 # Remove "db." when switching to dev version
 
-# with open('./ml_models/attrition_prediction_model.bin', 'rb') as file:
-#     model = pickle.load(file)
-
 @app.route('/send', methods=["GET", "POST"])
 def predict():
 
@@ -67,13 +64,17 @@ def predict():
         val4_data = request.form['JobRole']
         val5_data = request.form['JobInvolvement']
         val6_data = request.form['DistanceFromHome']
+        val7_data = request.form['BusinessTravel']
+        val8_data = request.form['Age']
         data_dict = {"Age": val1_data, 
                       "Education": val2_data, 
                       "HourlyRate": val3_data,
                       "JobRole": val4_data,
                       "JobInvolvement": val5_data,
-                      "DistanceFromHome": val6_data}
-        response = predict_attrition(model, data_dict)
+                      "DistanceFromHome": val6_data,
+                      "BusinessTravel": val7_data,
+                      "Age": val8_data}
+        response = predict_attrition(data_dict, model)
         prob_output = response["probability"]
         predict_output = response["y_pred"]
     return render_template("form.html", prob_text = prob_output, predict_text = predict_output)

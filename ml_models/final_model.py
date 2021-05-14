@@ -13,12 +13,12 @@ from sklearn.compose import ColumnTransformer
 ## Functions 
 def preprocess_cat_columns(data):
     data["Education"] = data["Education"].map({1:"Below College", 2:"College", 3:"Bachelor", 4:"Master",5:"Doctor"}) 
-    data["EnvironmentSatisfaction"] = data["EnvironmentSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
+    # attrition_df["EnvironmentSatisfaction"] = attrition_df["EnvironmentSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
     data["JobInvolvement"] = data["JobInvolvement"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
-    data["JobSatisfaction"] = data["JobSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
-    data["PerformanceRating"] = data["PerformanceRating"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
-    data["RelationshipSatisfaction"] = data["RelationshipSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
-    data["WorkLifeBalance"] = data["WorkLifeBalance"].map({1:"Bad", 2:"Good", 3:"Better", 4:"Best"})
+    # attrition_df["JobSatisfaction"] = attrition_df["JobSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
+    # attrition_df["PerformanceRating"] = attrition_df["PerformanceRating"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
+    # attrition_df["RelationshipSatisfaction"] = attrition_df["RelationshipSatisfaction"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
+    # attrition_df["WorkLifeBalance"] = attrition_df["WorkLifeBalance"].map({1:"Bad", 2:"Good", 3:"Better", 4:"Best"})
     return data
 
 
@@ -32,11 +32,12 @@ def num_pipeline_transformer(data):
 
 
 def pipeline_transformer(data):
-    cat_attrs = ["BusinessTravel", "Department", "Education", 
-                    "EducationField", "EnvironmentSatisfaction", "Gender",
-                    "JobInvolvement", "JobRole", "JobSatisfaction", 
-                    "MaritalStatus", "OverTime", "PerformanceRating", 
-                    "RelationshipSatisfaction", "WorkLifeBalance"]
+    cat_attrs = ["Education", "JobInvolvement", "BusinessTravel"]
+    # cat_attrs = ["BusinessTravel", "Department", "Education", 
+    #                 "EducationField", "EnvironmentSatisfaction", "Gender",
+    #                 "JobInvolvement", "JobRole", "JobSatisfaction", 
+    #                 "MaritalStatus", "OverTime", "PerformanceRating", 
+    #                 "RelationshipSatisfaction", "WorkLifeBalance"]
     num_attrs, num_pipeline = num_pipeline_transformer(data)
     prepared_data = ColumnTransformer([
         ("num", num_pipeline, list(num_attrs)),
@@ -49,7 +50,7 @@ def pipeline_transformer(data):
 def predict_attrition(config, model):
 
     if type(config) == dict:
-        df = pd.DataFrame(config)
+        df = pd.DataFrame(config, index=[0])
     else:
         df = config
 
@@ -64,20 +65,3 @@ def predict_attrition(config, model):
     return y_pred, probability
 
 
-# def make_predictions(processed_df, model):
-#     prediction = model.predict(processed_df)
-#     probability = model.predict_proba(processed_df)
-#     probabilities = []
-#     for prob_array in probability:
-#         probabilities.append(prob_array[1])
-    
-#     predictions_df = pd.DataFrame({"prediction": prediction,
-#                                    "probability": probabilities})
-    
-#     predictions_json = predictions_df.to_json(orient='records')
-#     return predictions_json 
-
-# def generate_predictions():
-#     test_df = pd.read_json("holdout_test.json")
-
-#     model_path = "attrition_prediction_model.bin"
