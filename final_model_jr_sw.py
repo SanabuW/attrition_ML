@@ -52,7 +52,7 @@ def num_pipeline_transformer(data):
 
 
 def pipeline_transformer(data):
-    cat_attrs = ["Education", "JobInvolvement", "BusinessTravel", "Gender", "Job Role"]
+    cat_attrs = ["Education", "JobInvolvement", "BusinessTravel", "Gender", "JobRole"]
     # cat_attrs = ["BusinessTravel", "Department", "Education", 
     #                 "EducationField", "EnvironmentSatisfaction", "Gender",
     #                 "JobInvolvement", "JobRole", "JobSatisfaction", 
@@ -80,16 +80,18 @@ def predict_attrition(config, model):
 
     preproc_df = preprocess_cat_columns(df)
     print(preproc_df)
-    pipeline = pipeline_transformer(preproc_df)
+    prepared_df = pipeline_transformer(preproc_df)
     pipe = make_pipeline(full_pipeline, model)
     #which "data" is this?
     #"data_labels" should be the OG X
-    attrition_df_temp = pd.read_csv("data/IBM_attrition_data.csv")
+    attrition_df_temp = pd.read_csv("misc_resources/data/IBM_attrition_data.csv")
     data_temp = attrition_df_temp.copy()
     data_temp_dropped_X = data_temp[["Age", "Education", "DistanceFromHome", "JobInvolvement", "HourlyRate", "JobRole", "Gender", "BusinessTravel"]].copy()
-    data_temp_dropped_Y = data_temp[["Age", "Education", "DistanceFromHome", "JobInvolvement", "HourlyRate", "JobRole", "Gender", "BusinessTravel"]].copy()
+    data_temp_dropped_Y = data_temp[["Attrition"]].copy()
     pipe.fit(data_temp_dropped_X, data_temp_dropped_Y)
-    y_pred = pipe.predict(preproc_df)
+    y_pred = pipe.predict(prepared_df)
+    # y_pred = pipe.predict(preproc_df)
+
     print(y_pred)
 
     # prepared_df = pipeline.transform(preproc_df)
