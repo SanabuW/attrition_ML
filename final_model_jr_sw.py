@@ -17,17 +17,17 @@ from sklearn.pipeline import make_pipeline
 def preprocess_cat_columns(data):
     data["Education"] = data["Education"].map({1:"Below College", 2:"College", 3:"Bachelor", 4:"Master",5:"Doctor"})
     data["JobInvolvement"] = data["JobInvolvement"].map({1:"Low", 2:"Medium", 3:"High", 4:"Very High"})
-    data["BusinessTravel"] = data["BusinessTravel"].map({1:"Travel_Frequently", 2:"Travel_Rarely", 3:"Non_Travel"})
-    data["Gender"] = data["Gender"].map({1:"Female", 2:"Male"})
-    data["JobRole"] = data["JobRole"].map({1:"Sales Executive",
-        2:"Research Scientist",
-        3:"Laboratory Technician",
-        4:"Manufacturing Director",
-        5:"Healthcare Representative",
-        6:"Manager",
-        7:"Sales Representative",
-        8:"Research Director",
-        9:"Human Resources"})
+    # data["BusinessTravel"] = data["BusinessTravel"].map({1:"Travel_Frequently", 2:"Travel_Rarely", 3:"Non_Travel"})
+    # data["Gender"] = data["Gender"].map({1:"Female", 2:"Male"})
+    # data["JobRole"] = data["JobRole"].map({1:"Sales Executive",
+    #     2:"Research Scientist",
+    #     3:"Laboratory Technician",
+    #     4:"Manufacturing Director",
+    #     5:"Healthcare Representative",
+    #     6:"Manager",
+    #     7:"Sales Representative",
+    #     8:"Research Director",
+    #     9:"Human Resources"})
 
 
 
@@ -80,17 +80,28 @@ def predict_attrition(config, model):
 
     preproc_df = preprocess_cat_columns(df)
     print(preproc_df)
-    prepared_df = pipeline_transformer(preproc_df)
-    pipe = make_pipeline(full_pipeline, model)
     #which "data" is this?
     #"data_labels" should be the OG X
     attrition_df_temp = pd.read_csv("misc_resources/data/IBM_attrition_data.csv")
     data_temp = attrition_df_temp.copy()
     data_temp_dropped_X = data_temp[["Age", "Education", "DistanceFromHome", "JobInvolvement", "HourlyRate", "JobRole", "Gender", "BusinessTravel"]].copy()
-    data_temp_dropped_Y = data_temp[["Attrition"]].copy()
-    pipe.fit(data_temp_dropped_X, data_temp_dropped_Y)
-    y_pred = pipe.predict(prepared_df)
+    # data_temp_dropped_X = data_temp[["Age", "Education", "DistanceFromHome", "JobInvolvement", "HourlyRate", "JobRole", "Gender", "BusinessTravel"]].copy()
+    data_temp_dropped_X_procc = preprocess_cat_columns(data_temp_dropped_X).copy()
+    data_temp_dropped_Y = data_temp["Attrition"].copy()
+
+    print(data_temp_dropped_X_procc)
+    # data_temp_dropped_Y = data_temp[["Attrition"]].copy()
+    print(data_temp_dropped_Y)
+    prepared_df = pipeline_transformer(data_temp_dropped_X_procc)
+    pipe = make_pipeline(full_pipeline, model)
+
+    pipe.fit(data_temp_dropped_X_procc, data_temp_dropped_Y)
+    # y_pred = pipe.predict(prepared_df)
+    print(df)
+    # y_pred = pipe.predict(prepared_df)
     # y_pred = pipe.predict(preproc_df)
+    y_pred = pipe.predict(df)
+
 
     print(y_pred)
 

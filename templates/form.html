@@ -127,7 +127,7 @@
                     <div class = "row">
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_1_form">Age</label>
-                        <input class="form-control" id = "val_1_form" name = "Age">
+                        <input class="form-control" value="30" id = "val_1_form" name = "Age">
 
                       </div>
                       <div class="form-group col-md-offset-3 col-md-3">
@@ -142,7 +142,7 @@
                       </div>
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_3_form">Distance From Home (miles)</label>
-                        <input  class="form-control" id = "val_3_form" name = "DistanceFromHome">
+                        <input  class="form-control" value="15" id = "val_3_form" name = "DistanceFromHome">
                       </div>
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_4_form">Job Involvement</label>
@@ -157,37 +157,37 @@
                     <div class = "row">
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_5_form">Hourly Rate</label>
-                        <input class="form-control" id = "val_5_form" name = "HourlyRate">
+                        <input class="form-control" value="35" id = "val_5_form" name = "HourlyRate">
                       </div>
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_6_form">Job Role</label>
                         <select class="form-control" id = "val_6_form" name = "JobRole">
-                          <option value = "1">Sales Executive</option>
-                          <option value = "2">Research Scientist</option>
-                          <option value = "3">Laboratory Technician</option>
-                          <option value = "4">Manufacturing Director</option>
-                          <option value = "5">Healthcare Representative</option>
-                          <option value = "6">Manager</option>
-                          <option value = "7">Sales Representative</option>
-                          <option value = "8">Research Director</option>
-                          <option value = "9">Human Resources</option>
+                          <option value = "Sales Executive">Sales Executive</option>
+                          <option value = "Research Scientist">Research Scientist</option>
+                          <option value = "Laboratory Technician">Laboratory Technician</option>
+                          <option value = "Manufacturing Director">Manufacturing Director</option>
+                          <option value = "Healthcare Representative">Healthcare Representative</option>
+                          <option value = "Manager">Manager</option>
+                          <option value = "Sales Representative">Sales Representative</option>
+                          <option value = "Research Director">Research Director</option>
+                          <option value = "Human Resources">Human Resources</option>
                         </select>
                       </div>
 
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_7_form">Gender</label>
                         <select class="form-control" id = "val_7_form" name = "Gender">
-                          <option value = 1>Female</option>
-                          <option value = 2>Male</option>
+                          <option value = "Female">Female</option>
+                          <option value = "Male">Male</option>
                         </select>
                       </div>
 
                       <div class="form-group col-md-offset-3 col-md-3">
                         <label for="val_8_form">Business Travel</label>
                         <select class="form-control" id = "val_8_form" name = "BusinessTravel">
-                          <option value = 1>Travel Frequently</option>
-                          <option value = 2>Travel Rarely</option>
-                          <option value = 3>No Travel</option>
+                          <option value = "Travel_Frequently">Travel Frequently</option>
+                          <option value = "Travel_Rarely">Travel Rarely</option>
+                          <option value = "Non-Travel">No Travel</option>
                         </select>
                       </div>
                     </div>
@@ -198,7 +198,7 @@
 <br>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  <p id = "result_predict"><strong>High chance of being an attrition employee?: {{predict_text}}</strong></p>
+                  <p id = "result_predict"><strong>High chance of being an attrition employee?: {{response_text}}</strong></p>
                 </div>
               </div>
             </div>

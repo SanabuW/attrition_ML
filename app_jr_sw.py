@@ -67,9 +67,9 @@ def predict():
         val3_data = int(request.form['DistanceFromHome'])
         val4_data = int(request.form['JobInvolvement'])
         val5_data = float(request.form['HourlyRate'])
-        val6_data = int(request.form['JobRole'])
-        val7_data = int(request.form['Gender'])
-        val8_data = int(request.form['BusinessTravel'])
+        val6_data = str(request.form['JobRole'])
+        val7_data = str(request.form['Gender'])
+        val8_data = str(request.form['BusinessTravel'])
 
         data_dict = {"Age": val1_data,
                         "Education": val2_data,
@@ -82,9 +82,9 @@ def predict():
 
         response = predict_attrition(data_dict, model)
 
-    return render_template("form.html", response_text = response)
+    return render_template("form.html", response_text = response[0])
 
 
 # Run app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug = True)
