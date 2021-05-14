@@ -40,10 +40,7 @@ def home():
 def form():
     return render_template("form.html")
 
-data_dict = {
-    "dict_val1" : None,
-    "dict_val2" : None
-}
+
 
 # APIs for data retrieval from server
 # Remove "db." when switching to dev version
