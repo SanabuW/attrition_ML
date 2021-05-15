@@ -11,7 +11,7 @@ from flask import (
 #================================================
 #  todo       CHANGE AFTER BRANCH MERGE           TODO
 #================================================
-from final_model_jr_sw import predict_attrition
+from ml_models.final_model import predict_attrition
 import pickle
 
 
@@ -45,7 +45,7 @@ def form():
 def predict():
 
     # Retreive finished prediction model
-    with open('./ml_models/attrition_prediction_model.bin', 'rb') as file:
+    with open('ml_models/attrition_prediction_model.bin', 'rb') as file:
         model = pickle.load(file)
         file.close()
     # Parse through form request

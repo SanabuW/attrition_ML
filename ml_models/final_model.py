@@ -1,14 +1,10 @@
-# import numpy as np
 import pandas as pd
-# import matplotlib.pyplot as plt
-# import seaborn as sns
 
-# from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
-
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
+
 from sklearn.pipeline import make_pipeline
 
 
@@ -54,7 +50,7 @@ def predict_attrition(config, model):
     preproc_df = preprocess_cat_columns(df)
     print(preproc_df)
     # Read in and filter out columns from original data for use for the pipe
-    attrition_df_temp = pd.read_csv("misc_resources/data/IBM_attrition_data.csv")
+    attrition_df_temp = pd.read_csv("ml_models/data/IBM_attrition_data.csv")
     data_temp = attrition_df_temp.copy()
     data_temp_dropped_X = data_temp[["Age", "Education", "DistanceFromHome", "JobInvolvement", "HourlyRate", "JobRole", "Gender", "BusinessTravel"]].copy()
     data_temp_dropped_X_procc = preprocess_cat_columns(data_temp_dropped_X).copy()
