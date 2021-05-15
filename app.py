@@ -4,21 +4,15 @@
 from flask import (
     Flask,
     render_template,
-    jsonify,
-    request,
-    redirect
+    # jsonify,
+    request
+    # redirect
 )
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
-## Comment out when using live ver.
-import os
-
-# Query functions to be applied to the separate api routes
-
-# For secure/live ops version deployment
-from flask_sqlalchemy import SQLAlchemy
-from test_alg_1 import predictor_func
+#================================================
+#  todo       CHANGE AFTER BRANCH MERGE           TODO
+#================================================
+from final_model_jr_sw import predict_attrition
+import pickle
 
 
 ####################################
@@ -26,6 +20,7 @@ from test_alg_1 import predictor_func
 ####################################
 # Set up Flask app
 app = Flask(__name__)
+
 
 ####################################
 # Create/Define Flask app routes
@@ -35,32 +30,51 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route("/index.html")
+def index():
+    return render_template("index.html")
 
 @app.route("/form.html")
 def form():
     return render_template("form.html")
 
 
-
-# APIs for data retrieval from server
-# Remove "db." when switching to dev version
-
+# API routes
 # Combined predictor route to post back out into HTML
-@app.route("/send", methods=["GET", "POST"])
-def send():
+@app.route('/send', methods=["GET", "POST"])
+def predict():
+
+    # Retreive finished prediction model
+    with open('./ml_models/attrition_prediction_model.bin', 'rb') as file:
+        model = pickle.load(file)
+        file.close()
+    # Parse through form request
     if request.method == "POST":
-        # check on if all types are correct
-        # add all values into object
-        val1_data = request.form["val_1_form_name"]
-        val2_data = request.form["val_2_form_name"]
-        data_dict["dict_val1"] = val1_data
-        data_dict["dict_val2"] = val2_data
-        response = predictor_func(request.form["val_1_form_name"], request.form["val_2_form_name"])
-        prob_output = response["probability"]
-        predict_output = response["prediction"]
-        return render_template("form.html", prob_text = prob_output, predict_text = predict_output)
+        val1_data = int(request.form['Age'])
+        val2_data = int(request.form['Education'])
+        val3_data = int(request.form['DistanceFromHome'])
+        val4_data = int(request.form['JobInvolvement'])
+        val5_data = float(request.form['HourlyRate'])
+        val6_data = str(request.form['JobRole'])
+        val7_data = str(request.form['Gender'])
+        val8_data = str(request.form['BusinessTravel'])
+
+        data_dict = {"Age": val1_data,
+                        "Education": val2_data,
+                        "DistanceFromHome": val3_data,
+                        "JobInvolvement": val4_data,
+                        "HourlyRate": val5_data,
+                        "JobRole": val6_data,
+                        "Gender": val7_data,
+                        "BusinessTravel": val8_data}
+
+        # Execute prediction using form data and finished model
+        response = predict_attrition(data_dict, model)[0]
+
+    # Return prediction response
+    return render_template("form.html", response_text = response)
 
 
 # Run app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug = True)
