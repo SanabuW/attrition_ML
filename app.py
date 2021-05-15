@@ -8,9 +8,7 @@ from flask import (
     request
     # redirect
 )
-#================================================
-#  todo       CHANGE AFTER BRANCH MERGE           TODO
-#================================================
+
 from ml_models.final_model import predict_attrition
 import pickle
 
