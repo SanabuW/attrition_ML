@@ -19,5 +19,5 @@
 * Deploy a predicitve model through flask
 * Create python script that will output predictor results
 * Wrap script in a function for the flask route to run
-* Connect to Heroku 
+* Connect to Heroku https://project-3-ab-jr-jz-sw.herokuapp.com
 * Visualize and Input!
