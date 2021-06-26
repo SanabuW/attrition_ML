@@ -20,7 +20,7 @@ An RFE analysis was conducted to explore what features have the greatest affect 
 
 
 The following feature importances were found:
-<br><img src="readme_images/model_001.png" width="200"/>
+<br><img src="readme_images/result_003.png" width="500"/>
 
 ### App Infrastructure
 A Heroku app running from Python script was set up to allow a dashboard to show summary insights of the data, and a form for users to input unique information and run the newly created prediction model.
@@ -29,15 +29,22 @@ The main Python script uses Flask to operate a webpage to perform the following 
 * Retrieve user inputs from an HTML form (app.py) and run the prediction model on the retrieved data (ml_models/final_model.py).
 
 #### Dashboard Page
+<img src="readme_images/dash_001_01.png" width="800"/>
+
 To display the visualizations online, select charts of the dataset were generated through Mongo Charts The charts were exported as JavaScript and HTML code and adjusted to fit the dashboard template.
 
 #### Prediction Form
-On the "Prediction" page, users can enter in information to predict if an employee is likely to become an attrition employee.
+<img src="readme_images/dash_002_01.png" width="800"/>
+
+On the "Attrition Predictor" page, users can enter in information to predict if an employee is likely to become an attrition employee.
 The user-input data is sent through the HTML form into app.py, and operated on within the predict_attrition() function, defined within final_model.py. An output of "Yes" or "No" ("The employee will likely become an attrition employee" and "The employee will not likely become an attrition employee", respectively) is displayed back onto the page using Jinga.
 
 
 ## Results
 Reviewing the data visually shows differences in Martial Status, Years at the Company, Working Years overall and Monthly Income.
+<img src="readme_images/result_005.png" width="200"/><br>
+<img src="readme_images/result_002.png" width="600"/><br>
+<img src="readme_images/result_001.png" width="600"/>
 
 Correlations with employee attrition appear to exist within Education levels and Job involvement influencing the likeliness of attrition, for example the combination of bachelor's degrees and moderate involvement.
 
