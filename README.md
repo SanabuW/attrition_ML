@@ -14,9 +14,13 @@ The dataset used was in tabular form, with each record as a different employee, 
 
 ### Pre-Analysis
 An RFE analysis was conducted to explore what features have the greatest affect in the attrition outcome, utilizing hyperparameter tuning on a random forest model using GridSearch. This was done through a Jupyter Notebook in ml_models/prediction_model3.ipnyb
+<br><img src="readme_images/model_002.png" width="500"/> &nbsp;
+<img src="readme_images/model_003.png" width="400"/>
+
+
 
 The following feature importances were found:
-
+<br><img src="readme_images/model_001.png" width="200"/>
 
 ### App Infrastructure
 A Heroku app running from Python script was set up to allow a dashboard to show summary insights of the data, and a form for users to input unique information and run the newly created prediction model.
