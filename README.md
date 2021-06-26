@@ -49,7 +49,7 @@ Reviewing the data visually shows differences in Martial Status, Years at the Co
 Correlations with employee attrition appear to exist within Education levels and Job involvement influencing the likeliness of attrition, for example the combination of bachelor's degrees and moderate involvement.
 <br><img src="readme_images/result_004.png" width="600"/>
 
-Real world applications may include employers who desire to reduce employee turnover weights, entering into discources with their employees about satisfaction of their job involvement, wage rates, commute, and overall job satisfaction
+Real world applications may include employers who desire to reduce employee turnover weights, entering into discources with their employees about satisfaction of their job involvement, wage rates, commute, and overall job satisfaction.
 
 
 ## Credits
