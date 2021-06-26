@@ -41,7 +41,7 @@ The user-input data is sent through the HTML form into app.py, and operated on w
 
 
 ## Results
-Reviewing the data visually shows differences in Martial Status, Years at the Company, Working Years overall and Monthly Income.
+Reviewing the data visually shows differences in Martial Status, Years at the Company, Working Years overall and Monthly Income.<br>
 <img src="readme_images/result_005.png" width="200"/><br>
 <img src="readme_images/result_002.png" width="600"/><br>
 <img src="readme_images/result_001.png" width="600"/>
