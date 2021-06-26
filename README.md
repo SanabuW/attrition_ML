@@ -44,10 +44,6 @@ Real world applications may include employers who desire to reduce employee turn
 * (2017). IBM HR Analytics Employee Attrition & Performance. https://www.kaggle.com/pavansubhasht/ibm-hr-analytics-attrition-dataset
 * (2020). End-to-End Machine Learning Project Tutorial — Part 1. https://dswharshit.medium.com/end-to-end-machine-learning-project-tutorial-part-1-ea6de9710c0
 * (2021). Soft UI Dashboard. https://www.creative-tim.com/product/soft-ui-dashboard
-* (2021). Slides Carnival. https://www.slidescarnival.com/
-* (2021). Vecteezy. https://www.vecteezy.com
-* (2017). How Long Should Your Interview Process Take? We Found Out. https://www.glassdoor.com/blog/how-long-should-interviews-take/
-* (2019). This Fixable Problem Costs U.S. Businesses $1 Trillion. https://www.gallup.com/workplace/247391/fixable-problem-costs-businesses-trillion.aspx
 
 ## License
 Soft UI Dashboard - Licensed under MIT (https://www.creative-tim.com/license)
